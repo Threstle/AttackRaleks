@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ReactorModuleScript : MonoBehaviour {
 
+	public bool hasCircuit;
+
 	//MAX
 	public int maxArmor = 5;
 	public int maxEnergy = 5;
@@ -29,6 +31,8 @@ public class ReactorModuleScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentRotationSpeed = rotationSpeed;
+		if (!hasCircuit)
+						rotationSpeed = 2;
 	}
 	
 	// Update is called once per frame
@@ -105,9 +109,11 @@ public class ReactorModuleScript : MonoBehaviour {
 			transform.Rotate (Vector3.right * -(rotationSpeed - (veloc)));
 			transform.Rotate (Vector3.forward * -(rotationSpeed - (veloc)));
 		}
+		if (hasCircuit) {
+			transform.Rotate (Vector3.forward * -(joyX* rotationSpeed - (veloc)));
+			transform.Rotate (Vector3.right * -(joyY* rotationSpeed - (veloc)));
+		}
 
-		transform.Rotate (Vector3.forward * -(joyX* rotationSpeed - (veloc)));
-		transform.Rotate (Vector3.right * -(joyY* rotationSpeed - (veloc)));
 	}
 
 
@@ -117,14 +123,14 @@ public class ReactorModuleScript : MonoBehaviour {
 		}
 
 		if (Input.GetKey (KeyCode.RightArrow)){
-			transform.Rotate (Vector3.forward * -(currentRotationSpeed - (veloc)));
+			transform.Rotate (Vector3.forward * -((rotationSpeed) - (veloc)));
 		}
 		if (Input.GetKey (KeyCode.LeftArrow))
-			transform.Rotate (Vector3.forward * +(rotationSpeed - (veloc)));
+			transform.Rotate (Vector3.forward * +((rotationSpeed) - (veloc)));
 		if (Input.GetKey (KeyCode.UpArrow))
-			transform.Rotate (Vector3.right * +(rotationSpeed - (veloc)));
+			transform.Rotate (Vector3.right * +((rotationSpeed) - (veloc)));
 		if (Input.GetKey (KeyCode.DownArrow))
-			transform.Rotate (Vector3.right * -(rotationSpeed - (veloc)));
+			transform.Rotate (Vector3.right * -((rotationSpeed) - (veloc)));
 		
 		
 		//if (Input.GetKey (KeyCode.X))

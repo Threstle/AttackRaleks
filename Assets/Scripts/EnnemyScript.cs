@@ -4,6 +4,7 @@ using System.Collections;
 public class EnnemyScript : MonoBehaviour {
 
 	public float speed;
+	public int vie;
 	public GameObject cible;
 	public float callibrageTime;
 	public GameObject interfaceShape;
@@ -60,7 +61,7 @@ public class EnnemyScript : MonoBehaviour {
 		centerOffsetX = bubbleWidth/2;  
 		centerOffsetY = bubbleHeight/2; 
 
-		speed = speed * Random.Range (0.8f, 1.2f);
+		speed = speed * Random.Range (0.1f, 4.2f);
 		cible = GameObject.FindGameObjectWithTag("Player");
 		InvokeRepeating("lookAtTarget",0,callibrageTime);
 		//InvokeRepeating("setAngle",0,2f);
@@ -89,7 +90,9 @@ public class EnnemyScript : MonoBehaviour {
 	}
 
 	public void destroySelf(){
-		StartCoroutine ("die");
+		vie--;
+
+		if(vie <= 0)StartCoroutine ("die");
 	}
 
 	void OnBecameInvisible () {
@@ -141,10 +144,10 @@ public class EnnemyScript : MonoBehaviour {
 	}  
 
 	IEnumerator die() {
-
+			transform.audio.Play ();
 			transform.particleSystem.Play ();
 			//transform.renderer.enabled = false;
-			yield return new WaitForSeconds(3);
+			yield return new WaitForSeconds(transform.audio.clip.length);
 			GameObject.Destroy (gameObject);
 		
 	}

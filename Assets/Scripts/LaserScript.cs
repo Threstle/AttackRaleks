@@ -5,7 +5,7 @@ public class LaserScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -14,7 +14,7 @@ public class LaserScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision){
-		if (collision.tag == "Ennemy") {
+		if (collision.tag == "Ennemy" && collision.name != "MotherShip") {
 			collision.gameObject.GetComponent<EnnemyScript>().destroySelf();
 		}
 		

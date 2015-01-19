@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour {
 	}
 	
 	void invokeMonster(){
-		if (transform.childCount < max) {
+		if (GameObject.FindGameObjectsWithTag("Ennemy").Length < max) {
 			Vector3 spawnPos = new Vector3 (
 				Random.Range (player.transform.position.x - 50, player.transform.position.x + 50),
 				Random.Range (player.transform.position.y - 50, player.transform.position.y + 50),
