@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{76C82DE9-8269-23AC-92FB-7CF89B129A67}") = "arduinoShip", "Assembly-CSharp.csproj", "{FB23262D-5B2B-75BB-1743-4C9A29EC47F3}"
+EndProject
+Project("{76C82DE9-8269-23AC-92FB-7CF89B129A67}") = "arduinoShip", "Assembly-UnityScript.unityproj", "{C552687C-278D-9ECD-FF96-B086887B9509}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB23262D-5B2B-75BB-1743-4C9A29EC47F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB23262D-5B2B-75BB-1743-4C9A29EC47F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB23262D-5B2B-75BB-1743-4C9A29EC47F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB23262D-5B2B-75BB-1743-4C9A29EC47F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C552687C-278D-9ECD-FF96-B086887B9509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C552687C-278D-9ECD-FF96-B086887B9509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C552687C-278D-9ECD-FF96-B086887B9509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C552687C-278D-9ECD-FF96-B086887B9509}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+											GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
+EndGlobal
