@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BulletScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ShipScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/RadarScript.cs" Line="24" Column="2" />
+      <File FileName="Assets/Scripts/ShipScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RadarScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ShipScript.cs" Line="70" Column="13" />
-      <File FileName="Assets/Scripts/ModulesScripts/RadarModuleScript.cs" Line="14" Column="39" />
-      <File FileName="Assets/Scripts/EnnemyScript.cs" Line="145" Column="4" />
-      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="46" Column="34" />
-      <File FileName="Assets/Scripts/ShooterScript.cs" Line="18" Column="6" />
-      <File FileName="Assets/Scripts/BulletScript.cs" Line="19" Column="2" />
-      <File FileName="Assets/Scripts/ModulesScripts/ReactorModuleScript.cs" Line="109" Column="3" />
+      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="112" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/RadarModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnnemyScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ShooterScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BulletScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/ReactorModuleScript.cs" Line="103" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

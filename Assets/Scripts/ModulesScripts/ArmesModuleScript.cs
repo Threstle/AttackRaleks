@@ -8,15 +8,19 @@ public class ArmesModuleScript : MonoBehaviour {
 	public float energyLaser;
 	public bool canShoot;
 	public bool wantShoot;
-	public bool wantShootLaser;
+	public bool isLaser;
 	public bool canShootLaser;
 	public float freq;
 	public GameObject bullet;
-
-	public string bombCode = "5876146";
+	public string bombCode;
+	public string bombCodePilot;
+	public bool bombIsReady;
+	public bool wantBomb;
+	public int sizeCode;
 
 	// Use this for initialization
 	void Start () {
+		bombCode = "12345";
 		StartCoroutine ("reload");
 		InvokeRepeating("emptyLaser",0,0.5f);
 	}
@@ -25,14 +29,14 @@ public class ArmesModuleScript : MonoBehaviour {
 	void Update () {
 
 		calculateState ();
-
-		if (Input.GetKey (KeyCode.Space)){
-		    wantShoot = true;
-		}
-		else{
-			wantShoot = false;
-		}
-	
+//
+//		if (Input.GetKey (KeyCode.Space)){
+//		    wantShoot = true;
+//		}
+//		else{
+//			wantShoot = false;
+//		}
+//	
 		shootLaser();
 
 	}
@@ -53,11 +57,31 @@ public class ArmesModuleScript : MonoBehaviour {
 
 	}
 
+	public void addCharToCode(string ch){
+
+		if (bombCodePilot.Length-1 > bombCode.Length)bombCodePilot = "";
+		bombCodePilot += ch;
+
+		if (bombCodePilot.Equals (bombCode)) {
+						bombIsReady = true;
+						Debug.Log("BOMB READY TO LAUNCH WAITING FOR TECHNICAL APPROVAL");
+				}
+	}
+
+	public void launchBomb(){
+
+	}
+
 	public void shoot(){
 		if (canShoot && wantShoot) {
-			/*if (!transform.audio.isPlaying) {
-				transform.audio.Play ();
-			}*/
+			if(isLaser){
+				if (canShootLaser) {
+					
+					GameObject.Find ("Laser").particleSystem.Play();
+					GameObject.Find ("Laser").collider.enabled = true;
+				}
+			}
+			else{
 
 			Vector3 pos = new Vector3(transform.localPosition.x+10,transform.localPosition.y,transform.localPosition.z);
 			GameObject currentBullet = Instantiate (bullet, pos, transform.rotation) as GameObject;
@@ -67,12 +91,21 @@ public class ArmesModuleScript : MonoBehaviour {
 			pos = new Vector3(transform.localPosition.x-10,transform.localPosition.y,transform.localPosition.z);
 			currentBullet = Instantiate (bullet, pos, transform.rotation) as GameObject;
 			//			currentBullet.GetComponent<BulletScript> ().speed += transform.parent.GetComponent<ShipScript>().speed;
-		//	currentBullet.transform.parent = transform;
+			//	currentBullet.transform.parent = transform;
+			}
+		}
+		else {
+			GameObject.Find ("Laser").particleSystem.Stop();
+			GameObject.Find ("Laser").collider.enabled = false;
+			GameObject.Find("Laser").particleSystem.Clear();
 		}
 	}
-
-
-
+	
+	IEnumerator desactivateBomb() {
+		yield return new WaitForSeconds(5);
+		bombIsReady = false;
+	}
+	
 	IEnumerator reload() {
 		while (true) {
 						shoot();
@@ -83,22 +116,14 @@ public class ArmesModuleScript : MonoBehaviour {
 	}
 
 	public void emptyLaser(){
-		if (wantShootLaser && canShootLaser) {
+		if (isLaser && canShootLaser && wantShoot) {
 			energyLaser -=0.01f;
 		}
 	}
 
 	public void shootLaser(){
 
-		if (wantShootLaser && canShootLaser) {
-					
-						GameObject.Find ("Laser").particleSystem.Play();
-						GameObject.Find ("Laser").collider.enabled = true;
-				} else {
-						GameObject.Find ("Laser").particleSystem.Stop();
-						GameObject.Find ("Laser").collider.enabled = false;
-			GameObject.Find("Laser").particleSystem.Clear();
-				}
+
 
 	}
 

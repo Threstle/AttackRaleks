@@ -16,7 +16,7 @@ public class ShipScript : MonoBehaviour {
 	public ArmesModuleScript armesModule;
 
 	//GAMEPLAY VAR
-
+	public string oldKey = "A";
 	//ENERGY
 
 
@@ -57,9 +57,16 @@ public class ShipScript : MonoBehaviour {
 		reactorModule.joyX = ard.joyX;
 		reactorModule.joyY = ard.joyY;
 
+
 		//Armes
 
-		armesModule.wantShootLaser = ard.wantShootLaser;
+		armesModule.isLaser = ard.isLaser;
+		armesModule.wantShoot = ard.wantShoot;
+		armesModule.wantBomb = ard.wantBomb;
+		if (ard.keypad != oldKey) {
+						armesModule.addCharToCode (ard.keypad);
+						oldKey = ard.keypad;
+				}
 	}
 
 	public void takeDamage(){

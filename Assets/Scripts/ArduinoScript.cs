@@ -22,7 +22,11 @@ public class ArduinoScript : MonoBehaviour
 	public int speed;
 	public int joyY;
 	public int joyX;
-	public bool wantShootLaser;
+	public bool wantShoot;
+	public bool wantBomb;
+	public bool isLaser;
+	public string keypad;
+
 	Thread myThread;
 	// Use this for initialization
 	void Start () 
@@ -40,6 +44,7 @@ public class ArduinoScript : MonoBehaviour
 	
 			message = sp.ReadLine ();
 			analyseMessage();
+
 			composeMessage();
 			sp.Write(messageToSend);
 		//	sp.WriteLine("634358");
@@ -108,10 +113,13 @@ public class ArduinoScript : MonoBehaviour
 	
 		char[] charTab = message.ToCharArray ();
 		if (charTab.Length > 0) {
-			speed = rateTo100(convertChar(charTab[0]));
-			wantShootLaser = convertToBool(charTab[1]);
+			speed = rateTo100(convertChar(charTab[0]))*2;
+			isLaser = convertToBool(charTab[1]);
+			keypad =  charTab[2].ToString();
 			joyY = rateTo100(convertChar(charTab[3]))-50;
 			joyX = rateTo100(convertChar(charTab[4]))-50;
+			wantShoot = convertToBool(charTab[6]);
+			wantBomb = convertToBool(charTab[7]);
 		}
 		//Debug.Log (rateTo100(convertChar(charTab[0])));
 
