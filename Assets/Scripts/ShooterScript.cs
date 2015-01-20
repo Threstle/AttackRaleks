@@ -5,17 +5,26 @@ public class ShooterScript : MonoBehaviour {
 	public bool canShoot = true;
 	public GameObject bullet;
 	public GameObject cible;
+	public float rate;
+	public bool isPrecise;
+	public int distanceTir;
 	// Use this for initialization
 	void Start () {
 		cible = GameObject.Find("Ship");
-		InvokeRepeating ("shoot", 1, 0.2f*Random.Range(0.1f,30));
+		InvokeRepeating ("shoot", 1, rate*Random.Range(0.1f,30));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Random.Range (1, 200) < 2) {
 			shootRandom();
-				}
+		}
+
+		if (isPrecise) {
+			transform.LookAt(new Vector3(cible.transform.position.x,
+			                             cible.transform.position.y,
+			                             cible.transform.position.z));
+		}
 	}
 
 	public void shootRandom(){
@@ -40,7 +49,7 @@ public class ShooterScript : MonoBehaviour {
 
 	public bool cibleIsNear(){
 
-		if ((int)Vector3.Distance (transform.position, GameObject.FindGameObjectWithTag ("Player").transform.position) < 100) {
+		if ((int)Vector3.Distance (transform.position, GameObject.FindGameObjectWithTag ("Player").transform.position) < distanceTir) {
 						return true;
 				} else {
 						return false;

@@ -64,6 +64,7 @@ public class EnnemyScript : MonoBehaviour {
 		speed = speed * Random.Range (0.1f, 4.2f);
 		cible = GameObject.FindGameObjectWithTag("Player");
 		InvokeRepeating("lookAtTarget",0,callibrageTime);
+		InvokeRepeating("updateTexture",0,0.1f);
 		//InvokeRepeating("setAngle",0,2f);
 	}
 
@@ -79,6 +80,12 @@ public class EnnemyScript : MonoBehaviour {
 		else isNear = false;
 
 
+	}
+
+	void updateTexture(){
+		float x = renderer.material.GetTextureOffset("_MainTex").x+Random.Range(1,3);
+		float y = renderer.material.GetTextureOffset("_MainTex").y+Random.Range(1,3);
+		renderer.material.SetTextureOffset("_MainTex", new Vector2(x,y));
 	}
 
 	void lookAtTarget(){

@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ModulesScripts\ReactorModuleScript.cs">
+    <Files>
+      <File FileName="Assets\Scripts\ArduinoScript.cs" Line="158" Column="1" />
+      <File FileName="Assets\Scripts\EnnemyScript.cs" Line="86" Column="58" />
+      <File FileName="Assets\Scripts\ModulesScripts\ArmesModuleScript.cs" Line="38" Column="4" />
+      <File FileName="Assets\Scripts\BulletScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ShooterScript.cs" Line="24" Column="4" />
+      <File FileName="Assets\Scripts\CameraScript.cs" Line="33" Column="1" />
+      <File FileName="Assets\Scripts\ShipScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ModulesScripts\ReactorModuleScript.cs" Line="35" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

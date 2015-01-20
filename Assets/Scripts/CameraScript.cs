@@ -16,7 +16,7 @@ public class CameraScript : MonoBehaviour {
 	}
 
 	public void shake(float s){
-		StartCoroutine (shakeCamera (s));
+	//	StartCoroutine (shakeCamera (s));
 	}
 	
 	IEnumerator shakeCamera(float s){

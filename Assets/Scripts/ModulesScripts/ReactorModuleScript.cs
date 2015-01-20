@@ -43,9 +43,9 @@ public class ReactorModuleScript : MonoBehaviour {
 		checkKeys ();
 		veloc = Mathf.Abs (rigidbody.velocity.x) + Mathf.Abs (rigidbody.velocity.y) + Mathf.Abs (rigidbody.velocity.z);
 		
-		Camera.main.fieldOfView = 90 + veloc/2;
+		Camera.main.fieldOfView =   Mathf.Lerp (Camera.main.fieldOfView, 90 + veloc / 2, 0.5f);
 		veloc /= 20;
-		
+
 		if (veloc > rotationSpeed * 0.7f) {
 			veloc = rotationSpeed * 0.8f;
 			
