@@ -9,9 +9,14 @@ public class RadarModuleScript : MonoBehaviour {
 	public bool isOff;
 	public bool distanceIsOff;
 	public bool guiIsOff;
+	public bool isRepearing;
+	public int freqChosen;
+	public int freqRadar;
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("looseConnection",50,50);
+		freqRadar = Random.Range (1, 5);
+		InvokeRepeating("looseConnection",25,50);
+		InvokeRepeating ("repear", 0, 2);
 	}
 	
 	// Update is called once per frame
@@ -45,11 +50,26 @@ public class RadarModuleScript : MonoBehaviour {
 		armor--;
 	}
 
+	public void repear(){
+		if (isRepearing && armor < 5) {
+			armor ++;
+		}
+	}
+
 	public void calculateStates(){
-		if (energy <= 0)
+			if (freqRadar != freqChosen) {
+						isBroken = true;
+				} else {
+						isBroken = false;
+				}
+	
+
+		if (energy <= 0) {
 						isOff = true;
-				else
+				} else {
 						isOff = false;
+					
+				}
 		switch (armor) {
 			case(2):distanceIsOff = true;break;
 			case(1):guiIsOff = true;break;
@@ -59,8 +79,9 @@ public class RadarModuleScript : MonoBehaviour {
 	}
 	
 	void looseConnection(){
-		if(Random.Range(0,50)<2)guiIsOff = true;
-	}
-
+				if (Random.Range (0, 50) < 2) {
+						freqRadar = Random.Range (1, 5);
+				}
+		}
 
 }

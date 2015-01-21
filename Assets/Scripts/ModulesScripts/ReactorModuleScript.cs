@@ -10,8 +10,9 @@ public class ReactorModuleScript : MonoBehaviour {
 	public int maxEnergy = 5;
 
 	//CURRENT
-	public int armorLeft = 5;
-	public int armorRight = 5;
+	public int armorLeft = 0;
+	public int armorRight = 0;
+	public int armor = 0;
 	public int energy;
 
 	public bool canMove;
@@ -20,6 +21,8 @@ public class ReactorModuleScript : MonoBehaviour {
 
 	public bool leftIsActive;
 	public bool rightIsActive;
+
+	public bool isRepearing;
 
 	public float speed = 100;
 	public float rotationSpeed;
@@ -30,6 +33,7 @@ public class ReactorModuleScript : MonoBehaviour {
 	public int joyY;
 	// Use this for initialization
 	void Start () {
+		InvokeRepeating ("repear", 0, 2);
 		currentRotationSpeed = rotationSpeed;
 		if (!hasCircuit)
 						rotationSpeed = 2;
@@ -77,8 +81,10 @@ public class ReactorModuleScript : MonoBehaviour {
 	}
 
 
+
 	public void calculateStates(){
-	
+
+		armor = (int)(armorLeft + armorRight) / 2;
 		speed = ((float)energy / (float)maxEnergy)*100;
 //		Debug.Log ((100 - ((float)armorLeft / (float)maxArmor) * 100) / 2);
 		speed -= (100 - ((float)armorLeft / (float)maxArmor)*100)/2;
@@ -116,6 +122,12 @@ public class ReactorModuleScript : MonoBehaviour {
 
 	}
 
+	public void repear(){
+		if (isRepearing && armorLeft < 5 && armorRight < 5) {
+			armorLeft ++;
+			armorRight++;
+		}
+	}
 
 	public void checkKeys (){
 		if (Input.GetKey (KeyCode.LeftShift)){

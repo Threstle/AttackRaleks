@@ -14,7 +14,7 @@ public class ShipScript : MonoBehaviour {
 	public ReactorModuleScript reactorModule;
 	public RadarModuleScript radarModule;
 	public ArmesModuleScript armesModule;
-
+	public EnergyModuleScript energyModule;
 	//GAMEPLAY VAR
 	public string oldKey = "A";
 	//ENERGY
@@ -30,6 +30,7 @@ public class ShipScript : MonoBehaviour {
 		reactorModule = transform.gameObject.GetComponent<ReactorModuleScript> ();
 		radarModule = transform.gameObject.GetComponent<RadarModuleScript> ();
 		armesModule = transform.gameObject.GetComponent<ArmesModuleScript> ();
+		energyModule = transform.gameObject.GetComponent<EnergyModuleScript> ();
 	}
 	
 	// Update is called once per frame
@@ -52,14 +53,26 @@ public class ShipScript : MonoBehaviour {
 //						reactorModule.move ();
 //
 //
+
+	
+
+		//HULL
+			//hullModule.armScreew = ard.armes_screw;
+
 		//Reacteurs
 		reactorModule.speed = ard.speed;
 		reactorModule.joyX = ard.joyX;
 		reactorModule.joyY = ard.joyY;
+		reactorModule.isRepearing = ard.reacteur_repair;
+		reactorModule.leftIsActive = ard.reacteur_left;
+		reactorModule.rightIsActive = ard.reacteur_right;
 
+		ard.reacteur_armor = reactorModule.armorLeft;
 
 		//Armes
-
+		armesModule.intensiteLight = ard.armes_lightCaptor;
+		armesModule.isRepearing = ard.armes_repair;
+		armesModule.codeBombTechnician = ard.armes_keypad;
 		armesModule.isLaser = ard.isLaser;
 		armesModule.wantShoot = ard.wantShoot;
 		armesModule.wantBomb = ard.wantBomb;
@@ -67,6 +80,16 @@ public class ShipScript : MonoBehaviour {
 						armesModule.addCharToCode (ard.keypad);
 						oldKey = ard.keypad;
 				}
+
+		//GENERATEUR
+		energyModule.isRepearing = ard.generator_repair;
+		energyModule.energyArmes = ard.generator_en_armes;
+		energyModule.energyRadar = ard.generator_en_radar;
+		energyModule.energyReactor = ard.generator_en_reactors;
+
+		//RADAR
+		radarModule.isRepearing = ard.radar_repair;
+		radarModule.freqChosen = ard.radar_freq;
 	}
 
 	public void takeDamage(){

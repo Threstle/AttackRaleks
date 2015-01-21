@@ -17,12 +17,15 @@ public class ArmesModuleScript : MonoBehaviour {
 	public bool bombIsReady;
 	public bool wantBomb;
 	public int sizeCode;
-
+	public int intensiteLight;
+	public bool isRepearing;
+	public string codeBombTechnician;
 	// Use this for initialization
 	void Start () {
 		bombCode = "12345";
 		StartCoroutine ("reload");
 		InvokeRepeating("emptyLaser",0,0.5f);
+		InvokeRepeating ("repear", 0, 2);
 	}
 	
 	// Update is called once per frame
@@ -72,6 +75,16 @@ public class ArmesModuleScript : MonoBehaviour {
 
 	public void launchBomb(){
 
+	}
+
+	public void reloadLaser(){
+		energyLaser += intensiteLight / 10;
+	}
+
+	public void repear(){
+		if (isRepearing && armor < 5) {
+			armor ++;
+		}
 	}
 
 	public void shoot(){
