@@ -20,6 +20,9 @@ public class ArmesModuleScript : MonoBehaviour {
 	public int intensiteLight;
 	public bool isRepearing;
 	public string codeBombTechnician;
+	public bool bombLaunched;
+
+	public GameObject bomb;
 	// Use this for initialization
 	void Start () {
 		bombCode = "12345";
@@ -68,7 +71,12 @@ public class ArmesModuleScript : MonoBehaviour {
 	}
 
 	public void launchBomb(){
-
+		if (codeBombTechnician.Equals (bombCode) && bombCodePilot.Equals (bombCode) && !bombLaunched) {
+			Instantiate(bomb,transform.position,transform.rotation);
+			codeBombTechnician = "";
+			bombCodePilot = "";
+			bombLaunched = false;
+		}
 	}
 
 	public void reloadLaser(){
@@ -88,6 +96,10 @@ public class ArmesModuleScript : MonoBehaviour {
 					
 					GameObject.Find ("Laser").particleSystem.Play();
 					GameObject.Find ("Laser").collider.enabled = true;
+					if(!GameObject.Find("Laser").audio.isPlaying)GameObject.Find("Laser").audio.Play();
+				}
+				else{
+					GameObject.Find("Laser").audio.Stop();
 				}
 			}
 			else{

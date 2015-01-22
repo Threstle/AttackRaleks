@@ -7,7 +7,7 @@ public class MonsterSpawner : MonoBehaviour {
 	public float max;
 	public GameObject player;
 	void Start () {
-		InvokeRepeating("invokeMonster",5,invokeRate);
+		InvokeRepeating("invokeMonster",15,invokeRate);
 		
 	}
 	

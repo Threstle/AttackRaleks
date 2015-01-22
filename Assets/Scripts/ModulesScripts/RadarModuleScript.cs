@@ -57,6 +57,7 @@ public class RadarModuleScript : MonoBehaviour {
 	}
 
 	public void calculateStates(){
+		int oldFreq = freqChosen;
 			if (freqRadar != freqChosen) {
 						isBroken = true;
 				} else {
@@ -75,7 +76,10 @@ public class RadarModuleScript : MonoBehaviour {
 			case(1):guiIsOff = true;break;
 			case(0):isBroken = true;break;
 		}
-		
+
+
+		if (freqRadar != oldFreq)
+						GameObject.Find ("Radar").audio.Play ();
 	}
 	
 	void looseConnection(){

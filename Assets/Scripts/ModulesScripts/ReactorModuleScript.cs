@@ -102,6 +102,18 @@ public class ReactorModuleScript : MonoBehaviour {
 			canMove = true;
 		else
 			canMove = false;
+
+		if (leftOnFlame) {
+			GameObject.Find ("LeftWing").GetComponent<ParticleSystem>().Play ();
+
+				} else {
+			GameObject.Find ("LeftWing").GetComponent<ParticleSystem>().Stop ();
+				}
+		if (rightOnFlame) {
+			GameObject.Find ("RightWing").GetComponent<ParticleSystem>().Play ();
+		} else {
+			GameObject.Find ("RightWing").GetComponent<ParticleSystem>().Stop ();
+		}
 	}
 
 	public void move(){
