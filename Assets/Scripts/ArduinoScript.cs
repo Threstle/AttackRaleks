@@ -6,14 +6,15 @@ using System.Threading;
 using System.Net.Sockets;
 using System.Text;
 using System.Collections.Generic;
+
 public class ArduinoScript : MonoBehaviour 
 {
 	//Setup parameters to connect to Arduino
-	public static SerialPort sp = new SerialPort("/dev/tty.usbmodem1421", 9600, Parity.None, 8, StopBits.One);
-	public static SerialPort sp1 = new SerialPort("/dev/tty.usbmodem9991411", 9600, Parity.None, 8, StopBits.One);
+	public static SerialPort sp = new SerialPort("/dev/tty.usbmodem1431", 9600, Parity.None, 8, StopBits.One);
+	public static SerialPort sp1 = new SerialPort("/dev/tty.usbmodem1411", 9600, Parity.None, 8, StopBits.One);
 	public static SerialPort sp2 = new SerialPort("/dev/tty.usbmodem1431", 9600, Parity.None, 8, StopBits.One);
 	public static SerialPort sp3 = new SerialPort("/dev/tty.usbmodem1a1311", 9600, Parity.None, 8, StopBits.One);
-	public static SerialPort sp4 = new SerialPort("/dev/tty.usbmodem1411", 9600, Parity.None, 8, StopBits.One);
+	public static SerialPort sp4 = new SerialPort("/dev/tty.usbmodem1421", 9600, Parity.None, 8, StopBits.One);
 	public static string strIn;
 	public string message;
 	public string message1;
@@ -64,47 +65,125 @@ public class ArduinoScript : MonoBehaviour
 	public bool reacteur_right_fire;
 
 	Thread myThread;
+	public int ardID ;
+
 	// Use this for initialization
 	void Start () 
 	{
-
-		OpenConnection();
-
+		// OpenConnection();
+//
+//		try{
+//			sp.Open();
+//			sp.DataReceived += DataReceivedHandler;
+//			sp.ErrorReceived += DataErrorReceivedHandler;
+//		}
+//		catch(Exception e){
+//			Debug.Log("Could not open serial port: " + e.Message);
+//			
+//		}
 	}
+
+//	private void DataReceivedHandler(
+//		object sender,
+//		SerialDataReceivedEventArgs e)
+//	{
+//		SerialPort sp = (SerialPort) sender;
+//		sp.ReadTimeout = 1000;
+//		string msg = sp.ReadLine();
+//		Debug.Log(msg);
+//
+//		analyseMessage ();
+//
+//		message = "";
+//		message1 = "";
+//		message2 = "";
+//		message3 = "";
+//		message4 = "";
+//	}
+//
+//	private void DataErrorReceivedHandler(object sender, SerialErrorReceivedEventArgs e)
+//	{
+//		Debug.Log("Serial port error:"+e.EventType.ToString ("G"));
+	//}
 	
 	void Update()
 	{
-	
-		if (sp4.IsOpen) {
 
-	
-			//message = sp.ReadLine ();
-			//message1 = sp1.ReadLine();
-			//message2 = sp2.ReadLine();
-			//message3 = sp3.ReadLine();
-			message4 = sp4.ReadLine();
-			//Debug.Log(message);
-			//Debug.Log(message1);
-
-			Debug.Log(message4);
-		
-			analyseMessage();
-
-			composeMessage();
-
-//			sp.Write(messageToSend);
-//			sp1.Write(messageToSend1);
-//			sp2.Write(messageToSend2);
-			//sp3.Write(messageToSend3);
-			sp4.Write(messageToSend4);
-
-			message = "";
-			message1 = "";
-			message2 = "";
-			message3 = "";
-			message4 = "";
-		}
-		
+//
+//		if (sp.IsOpen) {
+//				message = sp.ReadLine ();
+//				Debug.Log(message);
+//			}
+//		//message = sp.ReadLine ();
+//		analyseMessage();
+//
+//		// composeMessage();
+//		switch (ardID) {
+//		case 1:
+//			if (sp.IsOpen) {
+//				sp.Write(messageToSend);
+//			}
+//			break ;
+//		case 2:
+//			
+//			break ;
+//		case 3:
+//			
+//			break ;
+//		case 4:
+//			
+//			break ;
+//		case 5:
+//			
+//			break ;
+//		}
+//
+//		ardID++;
+//		if (ardID > 5) ardID = 1 ;
+//
+//		message = "";
+//		message1 = "";
+//		message2 = "";
+//		message3 = "";
+//		message4 = "";
+//
+//
+//
+//
+//
+//
+//		if (sp.IsOpen && sp4.IsOpen) {
+//
+//			message4 = sp4.ReadLine();
+//			//message = sp.ReadLine();
+//			//message1 = sp1.ReadLine();
+//			//message2 = sp2.ReadLine();
+//			//message3 = sp3.ReadLine();
+//		
+//			message = sp.ReadLine ();
+//			//Debug.Log(message);
+//			//Debug.Log(message1);
+//
+//			//Debug.Log(message);
+//			//Debug.Log(message1);
+//			analyseMessage();
+//
+//			composeMessage();
+//
+//			//sp.Write(messageToSend);
+////			sp1.Write(messageToSend1);
+////			sp2.Write(messageToSend2);
+//			//sp3.Write(messageToSend3);
+//			//sp4.Write(messageToSend4);
+//
+//			message = "";
+//			message1 = "";
+//			message2 = "";
+//			message3 = "";
+//			message4 = "";
+//		}
+	analyseMessage();
+		composeMessage();
 	}
 
 	//Fonctions appel
@@ -116,20 +195,22 @@ public class ArduinoScript : MonoBehaviour
 	//Function connecting to Arduino
 
 	//Deparsing Function
+
+
 	public void analyseMessage(){
 	
 
 		//COCKPIT
 		char[] charTab = message.ToCharArray ();
-//		if (charTab.Length > 0) {
-//			speed = rateTo100(convertChar(charTab[0]))*2;
-//			isLaser = convertToBool(charTab[1]);
-//			keypad =  charTab[2].ToString();
-//			joyY = rateTo100(convertChar(charTab[3]))-50;
-//			joyX = rateTo100(convertChar(charTab[4]))-50;
-//			wantShoot = convertToBool(charTab[6]);
-//			wantBomb = convertToBool(charTab[7]);
-//		}
+		if (charTab.Length > 0) {
+			speed = rateTo100(convertChar(charTab[0]))*2;
+			isLaser = convertToBool(charTab[1]);
+			keypad =  charTab[2].ToString();
+			joyY = rateTo100(convertChar(charTab[3]))-50;
+			joyX = rateTo100(convertChar(charTab[4]))-50;
+			wantShoot = convertToBool(charTab[6]);
+			wantBomb = convertToBool(charTab[7]);
+		}
 
 		//ARMEMENT
 //		charTab = message1.ToCharArray ();
@@ -166,18 +247,23 @@ public class ArduinoScript : MonoBehaviour
 			reacteur_screw = convertToBool(charTab[1]);
 			reacteur_left = convertToBool(charTab[2]);
 			reacteur_right = convertToBool(charTab[3]);
+
 		}
 
-		message = "";
-		message1 = "";
-		message2 = "";
-		message3 = "";
-		message4 = "";
+//		message = "";
+//		message1 = "";
+//		message2 = "";
+//		message3 = "";
+//		message4 = "";
 	}
 
 	public void composeMessage(){
-		messageToSend4 = "";
-		messageToSend4 += reacteur_armor;
+//		messageToSend4 = "";
+//		messageToSend4 += reacteur_armor;
+//		messageToSend4 += reacteur_left_fire;
+//		messageToSend4 += reacteur_right_fire;
+//		messageToSend4 += "@";
+		messageToSend4 = "1@";
 	}
 
 	public int rateTo100(int value){
@@ -192,51 +278,51 @@ public class ArduinoScript : MonoBehaviour
 	}
 
 
-	public void openConnectionSerial(SerialPort spA){
-		Debug.Log (spA);
-		if (spA != null) 
-		{
-			if (spA.IsOpen) 
-			{
-				spA.Close();
-				//message = "Closing port, because it was already open!";
-			}
-			else 
-			{
-				spA.Open();  // opens the connection
-				spA.ReadTimeout = 1000;  // sets the timeout value before reporting error
-				
-			}
-		}
-		else 
-		{
-			if (spA.IsOpen)
-			{
-				print("Port is already open");
-			}
-			else 
-			{
-				print("Port == null");
-			}
-		}
-	}
-	public void OpenConnection() 
-	{
+//	public void openConnectionSerial(SerialPort spA){
+//
+//		if (spA != null) 
+//		{
+//			if (spA.IsOpen) 
+//			{
+//				spA.Close();
+//				//message = "Closing port, because it was already open!";
+//			}
+//			else 
+//			{
+//				spA.Open();  // opens the connection
+//				spA.ReadTimeout = 1000;  // sets the timeout value before reporting error
+//				
+//			}
+//		}
+//		else 
+//		{
+//			if (spA.IsOpen)
+//			{
+//				print("Port is already open");
+//			}
+//			else 
+//			{
+//				print("Port == null");
+//			}
+//		}
+//	}
+//	public void OpenConnection() 
+//	{
 //		openConnectionSerial (sp);
-//		openConnectionSerial (sp1);
-//		openConnectionSerial (sp2);
-//		openConnectionSerial (sp3);
-		openConnectionSerial (sp4);
-	}
-	
-	void OnApplicationQuit() 
-	{
-		sp.Close();
-		sp1.Close ();
-		sp2.Close ();
-		sp3.Close ();
-		sp4.Close ();
-	}
+////		openConnectionSerial (sp1);
+////		openConnectionSerial (sp2);
+////		openConnectionSerial (sp3);
+////		openConnectionSerial (sp4);
+//	}
+//	
+//	void OnApplicationQuit() 
+//	{
+//		sp.Close();
+//		sp1.Close ();
+//		sp2.Close ();
+//		sp3.Close ();
+//		sp4.Close ();
+//	}
 
 	//DECRYPT METHODS
 

@@ -98,7 +98,7 @@ public class ReactorModuleScript : MonoBehaviour {
 			else rightOnFlame = false;
 
 
-		if (!leftOnFlame || !rightOnFlame && (leftIsActive || rightIsActive))
+		if ((!leftOnFlame || !rightOnFlame) && (leftIsActive && rightIsActive))
 			canMove = true;
 		else
 			canMove = false;

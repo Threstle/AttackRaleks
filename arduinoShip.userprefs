@@ -1,18 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ArduinoScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestArduinoScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/ShipScript.cs" Line="81" Column="51" />
+      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="8" Column="34" />
+      <File FileName="Assets/Scripts/ShipScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/RadarScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="84" Column="32" />
-      <File FileName="Assets/Scripts/ModulesScripts/RadarModuleScript.cs" Line="11" Column="23" />
-      <File FileName="Assets/Scripts/EnnemyScript.cs" Line="120" Column="4" />
-      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="28" Column="36" />
-      <File FileName="Assets/Scripts/ShooterScript.cs" Line="7" Column="26" />
+      <File FileName="Assets/Scripts/ModulesScripts/RadarModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnnemyScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ShooterScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/BulletScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ModulesScripts/ReactorModuleScript.cs" Line="103" Column="71" />
-      <File FileName="Assets/Scripts/ModulesScripts/EnergyModuleScript.cs" Line="27" Column="22" />
+      <File FileName="Assets/Scripts/ModulesScripts/ReactorModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/EnergyModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestArduinoScript.cs" Line="16" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

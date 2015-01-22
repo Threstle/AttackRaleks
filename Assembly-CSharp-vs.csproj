@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ArduinoObjects\Assets\Scripts\GUIManager.cs" />
+     <Compile Include="Assets\ArduinoObjects\Assets\Scripts\UnitySerialPort.cs" />
      <Compile Include="Assets\Scripts\ArduinoScript.cs" />
      <Compile Include="Assets\Scripts\BillBoarding.cs" />
      <Compile Include="Assets\Scripts\BulletScript.cs" />
@@ -61,6 +63,7 @@
      <Compile Include="Assets\Scripts\RadarScript.cs" />
      <Compile Include="Assets\Scripts\ShipScript.cs" />
      <Compile Include="Assets\Scripts\ShooterScript.cs" />
+     <Compile Include="Assets\TestArduinoScript.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\mFakeWaterRefractions1\FakeSurfaceAndBottom4.shader" />
  <Reference Include="UnityEngine.UI">

@@ -68,6 +68,8 @@ public class ShipScript : MonoBehaviour {
 		reactorModule.rightIsActive = ard.reacteur_right;
 
 		ard.reacteur_armor = reactorModule.armorLeft;
+		reactorModule.leftOnFlame = ard.reacteur_left_fire;
+		reactorModule.rightOnFlame = ard.reacteur_right_fire;
 
 		//Armes
 		armesModule.intensiteLight = ard.armes_lightCaptor;

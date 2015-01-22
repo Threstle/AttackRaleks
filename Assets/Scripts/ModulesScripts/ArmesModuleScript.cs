@@ -32,14 +32,8 @@ public class ArmesModuleScript : MonoBehaviour {
 	void Update () {
 
 		calculateState ();
-		if (GetComponent<ReactorModuleScript> ().hasCircuit) {
-			if (Input.GetKey (KeyCode.Space)){
-		    wantShoot = true;
-			}
-			else{
-				wantShoot = false;
-			}
-		}
+	
+	
 //		
 //	
 		shootLaser();
