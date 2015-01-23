@@ -15,7 +15,7 @@ public class RadarModuleScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		freqRadar = Random.Range (1, 5);
-		InvokeRepeating("looseConnection",25,50);
+		InvokeRepeating("looseConnection",1,5);
 		InvokeRepeating ("repear", 0, 2);
 	}
 	

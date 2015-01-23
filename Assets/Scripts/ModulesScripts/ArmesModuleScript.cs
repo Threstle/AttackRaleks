@@ -15,9 +15,10 @@ public class ArmesModuleScript : MonoBehaviour {
 	public string bombCode;
 	public string bombCodePilot;
 	public bool bombIsReady;
+	public bool bombIsReadyA;
 	public bool wantBomb;
 	public int sizeCode;
-	public int intensiteLight;
+	public float intensiteLight;
 	public bool isRepearing;
 	public string codeBombTechnician;
 	public bool bombLaunched;
@@ -27,6 +28,7 @@ public class ArmesModuleScript : MonoBehaviour {
 	void Start () {
 		bombCode = "12345";
 		StartCoroutine ("reload");
+		InvokeRepeating ("reloadLaser",1,3);
 		InvokeRepeating("emptyLaser",0,0.5f);
 		InvokeRepeating ("repear", 0, 2);
 	}
@@ -36,10 +38,11 @@ public class ArmesModuleScript : MonoBehaviour {
 
 		calculateState ();
 	
-	
-//		
+		if (codeBombTechnician.Length-1 > bombCode.Length)codeBombTechnician = "";
+		if (bombCodePilot.Length-1 > bombCode.Length)bombCodePilot = "";
 //	
 		shootLaser();
+		launchBomb ();
 
 	}
 
@@ -59,10 +62,15 @@ public class ArmesModuleScript : MonoBehaviour {
 
 	}
 
+	public void damage(){
+		if(armor > 0)armor--;
+	}
+
 	public void addCharToCode(string ch){
 
 		if (bombCodePilot.Length-1 > bombCode.Length)bombCodePilot = "";
 		bombCodePilot += ch;
+
 
 		if (bombCodePilot.Equals (bombCode)) {
 						bombIsReady = true;
@@ -70,17 +78,33 @@ public class ArmesModuleScript : MonoBehaviour {
 				}
 	}
 
+	public void addCharToCodeA(string ch){
+		
+		if (codeBombTechnician.Length-1 > bombCode.Length)codeBombTechnician = "";
+		codeBombTechnician += ch;
+		
+		
+		if (codeBombTechnician.Equals (bombCode)) {
+			bombIsReadyA = true;
+			Debug.Log("BOMB READY TO LAUNCH WAITING FOR PILOT APPROVAL");
+		}
+	}
+
 	public void launchBomb(){
-		if (codeBombTechnician.Equals (bombCode) && bombCodePilot.Equals (bombCode) && !bombLaunched) {
+		if (bombIsReady && bombIsReadyA && !bombLaunched && wantBomb) {
+			Debug.Log("BOOOOOOOOOOOOMB");
 			Instantiate(bomb,transform.position,transform.rotation);
+
 			codeBombTechnician = "";
 			bombCodePilot = "";
-			bombLaunched = false;
+			bombLaunched = true;
+			bombIsReady = false;
+			bombIsReadyA = false;
 		}
 	}
 
 	public void reloadLaser(){
-		energyLaser += intensiteLight / 10;
+		if(energyLaser < 1)energyLaser += intensiteLight / 200;
 	}
 
 	public void repear(){
@@ -125,6 +149,9 @@ public class ArmesModuleScript : MonoBehaviour {
 	IEnumerator desactivateBomb() {
 		yield return new WaitForSeconds(5);
 		bombIsReady = false;
+		bombIsReadyA = false;
+		codeBombTechnician = "";
+		bombCodePilot = "";
 	}
 	
 	IEnumerator reload() {

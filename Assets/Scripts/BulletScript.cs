@@ -29,6 +29,7 @@ public class BulletScript : MonoBehaviour {
 		if (collision.tag == "Player"  && isEnnemy) {
 		
 			Debug.Log("TOUCHE");
+			collision.GetComponent<ShipScript>().takeDamage();
 		}
 
 	}

@@ -17,6 +17,7 @@ public class ShipScript : MonoBehaviour {
 	public EnergyModuleScript energyModule;
 	//GAMEPLAY VAR
 	public string oldKey = "A";
+	public string oldKeyA = "A";
 	//ENERGY
 
 
@@ -74,14 +75,22 @@ public class ShipScript : MonoBehaviour {
 		//Armes
 		armesModule.intensiteLight = ard.armes_lightCaptor;
 		armesModule.isRepearing = ard.armes_repair;
-		armesModule.codeBombTechnician = ard.armes_keypad;
+
 		armesModule.isLaser = ard.isLaser;
 		armesModule.wantShoot = ard.wantShoot;
 		armesModule.wantBomb = ard.wantBomb;
+
 		if (ard.keypad != oldKey) {
 						armesModule.addCharToCode (ard.keypad);
 						oldKey = ard.keypad;
 				}
+		if (ard.armes_keypad != oldKeyA) {
+					armesModule.addCharToCodeA (ard.armes_keypad);
+					oldKeyA = ard.armes_keypad;
+		}
+
+		ard.armes_armor = armesModule.armor;
+
 
 		//GENERATEUR
 		energyModule.isRepearing = ard.generator_repair;
@@ -92,6 +101,9 @@ public class ShipScript : MonoBehaviour {
 		//RADAR
 		radarModule.isRepearing = ard.radar_repair;
 		radarModule.freqChosen = ard.radar_freq;
+
+		ard.radar_armor = radarModule.armor;
+
 	}
 
 	public void takeDamage(){
@@ -100,6 +112,7 @@ public class ShipScript : MonoBehaviour {
 		case(1):reactorModule.damageLeft();break;
 		case(2):reactorModule.damageRight();break;
 		case(3):radarModule.damage();break;
+		case(4):armesModule.damage();break;
 		
 		}
 	}

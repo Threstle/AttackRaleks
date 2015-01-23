@@ -1,19 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestArduinoScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BulletScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="8" Column="34" />
-      <File FileName="Assets/Scripts/ShipScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ArduinoScript.cs" Line="265" Column="33" />
+      <File FileName="Assets/Scripts/ShipScript.cs" Line="131" Column="18" />
       <File FileName="Assets/Scripts/RadarScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ModulesScripts/RadarModuleScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/EnnemyScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ModulesScripts/ArmesModuleScript.cs" Line="100" Column="55" />
       <File FileName="Assets/Scripts/ShooterScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/BulletScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BulletScript.cs" Line="32" Column="54" />
       <File FileName="Assets/Scripts/ModulesScripts/ReactorModuleScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ModulesScripts/EnergyModuleScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestArduinoScript.cs" Line="16" Column="22" />
+      <File FileName="Assets/TestArduinoScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/ArduinoObjects/Assets/Scripts/UnitySerialPort.cs" Line="1" Column="1" />
+      <File FileName="Assets/ArduinoObjects/Assets/Scripts/GUIManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

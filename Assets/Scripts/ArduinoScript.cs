@@ -44,6 +44,7 @@ public class ArduinoScript : MonoBehaviour
 	public bool armes_screw;
 	public int armes_lightCaptor;
 	public string armes_keypad;
+	public int armes_armor;
 	
 	public bool generator_repair;
 	public bool generator_screw;
@@ -54,6 +55,7 @@ public class ArduinoScript : MonoBehaviour
 	public bool radar_repair;
 	public bool radar_screw;
 	public int  radar_freq;
+	public int radar_armor;
 
 	public bool reacteur_repair;
 	public bool reacteur_screw;
@@ -203,23 +205,22 @@ public class ArduinoScript : MonoBehaviour
 		//COCKPIT
 		char[] charTab = message.ToCharArray ();
 		if (charTab.Length > 0) {
-			speed = rateTo100(convertChar(charTab[0]))*2;
+			speed = 100- rateTo100(convertChar(charTab[0]))*2;
 			isLaser = convertToBool(charTab[1]);
 			keypad =  charTab[2].ToString();
-			joyY = rateTo100(convertChar(charTab[3]))-50;
-			joyX = rateTo100(convertChar(charTab[4]))-50;
+			joyX = rateTo100(convertChar(charTab[3]))-50;
+			joyY = 100-rateTo100(convertChar(charTab[4]))-50;
 			wantShoot = convertToBool(charTab[6]);
 			wantBomb = convertToBool(charTab[7]);
 		}
 
 		//ARMEMENT
-//		charTab = message1.ToCharArray ();
-//		if (charTab.Length > 0) {
-//			armes_repair = convertToBool(charTab[0]);
-//			armes_screw = convertToBool(charTab[1]);
-//			armes_lightCaptor = rateTo100(convertChar(charTab[2]));
-//			armes_keypad = charTab[3].ToString();
-//		}
+		charTab = message1.ToCharArray ();
+		if (charTab.Length > 0) {
+			armes_repair = convertToBool(charTab[1]);
+			armes_lightCaptor = rateTo100(convertChar(charTab[0]));
+			armes_keypad = charTab[2].ToString();
+		}
 
 //		//GENERATEUR
 //		charTab = message2.ToCharArray ();
@@ -233,12 +234,11 @@ public class ArduinoScript : MonoBehaviour
 //		}
 
 		//RADAR
-//		charTab = message3.ToCharArray ();
-//		if (charTab.Length > 0) {
-//			radar_repair = convertToBool(charTab[0]);
-//			radar_screw = convertToBool(charTab[1]);
-//			radar_freq = convertChar (charTab[2]);
-//		}
+		charTab = message3.ToCharArray ();
+		if (charTab.Length > 0) {
+			radar_repair = convertToBool(charTab[0]);
+			radar_freq = convertChar (charTab[1]);
+		}
 
 		//REACTEUR
 		charTab = message4.ToCharArray ();
@@ -258,12 +258,16 @@ public class ArduinoScript : MonoBehaviour
 	}
 
 	public void composeMessage(){
-//		messageToSend4 = "";
-//		messageToSend4 += reacteur_armor;
+		messageToSend1 = "";
+		messageToSend1 += armes_armor;
+		messageToSend4 = "";
+		messageToSend3 = "";
+		messageToSend3 += radar_armor;
+		messageToSend4 += reacteur_armor;
 //		messageToSend4 += reacteur_left_fire;
 //		messageToSend4 += reacteur_right_fire;
 //		messageToSend4 += "@";
-		messageToSend4 = "1@";
+
 	}
 
 	public int rateTo100(int value){
